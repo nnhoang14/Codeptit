@@ -18,7 +18,6 @@ void addlight(int street[], int len,int k){
             if(nolight%area==0)add+=nolight/area;
             else add+=nolight/area+1;
             nolight=0;
-            
         }
     }
     printf("%d",add);
