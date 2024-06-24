@@ -17,7 +17,6 @@ int main() {
     while(test--){
         char s[100];
         char res[100]="";
-        //gets(s);
         fgets(s,80,stdin);
         s[strlen(s)]='\0';
         char *token= strtok(s," ");
