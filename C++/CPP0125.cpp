@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0125
+//LIỆT KÊ SỐ NGUYÊN TỐ - 1
+
 #include <bits/stdc++.h>
 using namespace std;
 
