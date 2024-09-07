@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0208
+//PHẦN TỬ NHỎ NHẤT THỨ K
+
 #include <bits/stdc++.h>
 using namespace std;
 
