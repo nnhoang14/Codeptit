@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0153
+//CHIA DƯ TỪ 1 ĐẾN N
+
 #include <bits/stdc++.h>
 using namespace std;
 
