@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0133
+//ƯỚC SỐ NGUYÊN TỐ NHỎ HƠN N
+
 #include <bits/stdc++.h>
 using namespace std;
 
