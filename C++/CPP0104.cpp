@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0104\
+//TÍNH TỔNG GIAI THỪA
+
 #include <bits/stdc++.h>
 using namespace std;
 
