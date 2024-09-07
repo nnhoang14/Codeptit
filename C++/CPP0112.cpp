@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0112
+//KHOẢNG CÁCH
+
 #include <bits/stdc++.h>
 using namespace std;
 
