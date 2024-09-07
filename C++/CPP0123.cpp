@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0123
+//KIỂM TRA NGUYÊN TỐ
+
 #include <bits/stdc++.h>
 using namespace std;
 
