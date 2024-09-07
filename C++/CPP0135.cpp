@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0135
+//LIỆT KÊ SỐ CÓ BA ƯỚC SỐ
+
 #include <bits/stdc++.h>
 using namespace std;
 
