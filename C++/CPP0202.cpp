@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0202
+//KHOẢNG CÁCH NHỎ NHẤT
+
 #include <bits/stdc++.h>
 using namespace std;
 
