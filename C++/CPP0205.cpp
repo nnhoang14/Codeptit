@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0205
+//DÃY TAM GIÁC
+
 #include <bits/stdc++.h>
 using namespace std;
 
