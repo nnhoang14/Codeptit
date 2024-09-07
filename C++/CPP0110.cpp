@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0110
+//MÃ SỐ QUỐC GIA
+
 #include <bits/stdc++.h>
 using namespace std;
 
