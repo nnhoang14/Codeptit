@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0111
+//SỐ LIỀN KỀ
+
 #include <bits/stdc++.h>
 using namespace std;
 
