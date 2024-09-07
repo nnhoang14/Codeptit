@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0127
+//CẶP SỐ NGUYÊN TỐ ĐẦU TIÊN CÓ TỔNG BẰNG N
+
 #include <bits/stdc++.h>
 using namespace std;
 
