@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0227
+//IN MA TRẬN - 1
+
 #include <bits/stdc++.h>
 using namespace std;
 
