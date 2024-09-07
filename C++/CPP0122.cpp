@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0122
+//ƯỚC SỐ CHUNG LỚN NHẤT CỦA N SỐ NGUYÊN DƯƠNG ĐẦU TIÊN
+
 #include <bits/stdc++.h>
 using namespace std;
 
