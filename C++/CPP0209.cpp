@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0209
+//TÍNH TỔNG TRONG KHOẢNG
+
 #include <bits/stdc++.h>
 using namespace std;
 
