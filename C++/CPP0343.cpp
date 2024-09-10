@@ -1,14 +1,8 @@
-//https://code.ptit.edu.vn/student/question/CPP0343
-//DÃY ƯU THẾ
+//https://code.ptit.edu.vn/student/question/CPP0354
+//MÃ HÓA
 
 #include <bits/stdc++.h>
 using namespace std;
-
-int check(int size, int count){
-    if (size % 2 == 0 && size - count < count) return 1;
-    if (size % 2 != 0 && size - count > count) return 1;
-    return 0;
-}
 
 int main() {
     int test;
@@ -18,15 +12,16 @@ int main() {
     {
         string s;
         getline(cin,s);
-        stringstream ss(s);
-        int count = 0, size = 0, num; 
-        while (ss >> num)
-        {
-            if(num % 2 == 0)count++;
-            size++;
+        map<char,int> freq;
+        vector<char> stt;
+        for(auto c : s){
+            if(freq[c] == 0)stt.push_back(c);
+            freq[c]++;
         }
-        if(check(size,count))cout << "YES" << endl;
-        else cout << "NO" << endl;
+        for(auto c : stt){
+            cout<<c<<freq[c];
+        }
+        cout<<endl; 
     }
     return 0;
 }
