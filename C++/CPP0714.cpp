@@ -11,10 +11,13 @@ int main() {
     {
         int num;
         cin >> num;
-        vector<string> n(num);
-        for(int i = 0; i < num; i++)cin >> n[i];
-        prev_permutation(n.begin(),n.end());
-        for(int i = 0; i < num; i++)cout << n[i] << " ";
+        int n[num];
+        for(auto &x : n)cin >> x;
+        int i = num - 2, j = num - 1;
+        while(n[i] <= n[j] && i >=0)i--;
+        while (n[j] >= n[i])j--;
+        swap(n[i],n[j]);
+        for(auto &x : n)cout << x << " ";
         cout << endl;
     }
 	return 0;
