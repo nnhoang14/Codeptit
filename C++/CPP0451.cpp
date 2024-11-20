@@ -1,5 +1,5 @@
 //https://code.ptit.edu.vn/student/question/CPP0451
-//NHỎ NHẤT THỨ K
+//PHẦN TỬ GẦN NHẤT
 
 #include <bits/stdc++.h>
 using namespace std;
