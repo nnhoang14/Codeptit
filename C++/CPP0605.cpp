@@ -20,24 +20,15 @@ PhanSo::PhanSo(ll t, ll m){
     mau = m;
 }
 
-ll gcd(ll a, ll b){
-    while(b!=0){
-        ll r = a % b;
-        a = b;
-        b = r;
-    }
-    return a;
-}
-
 istream &operator >> (istream &in, PhanSo &p){
     in >> p.tu >> p.mau;
     return in;
 }
 
 void PhanSo::rutgon(){
-    ll uc = gcd(tu, mau);
-    tu = tu / uc;
-    mau =mau / uc;
+    ll uc = __gcd(tu, mau);
+    tu /= uc;
+    mau /= uc;
 }
 
 ostream &operator << (ostream &out, PhanSo &p){
