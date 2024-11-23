@@ -22,11 +22,11 @@ SinhVien::SinhVien(){
 }
 
 istream &operator >> (istream &in, SinhVien &ds){
-    cin >> ws;
-    getline(cin, ds.msv);
-    getline(cin, ds.name);
-    getline(cin, ds.cl);
-    getline(cin, ds.email);
+    in >> ws;
+    getline(in, ds.msv);
+    getline(in, ds.name);
+    getline(in, ds.cl);
+    getline(in, ds.email);
     return in;
 }
 
