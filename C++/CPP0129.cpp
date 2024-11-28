@@ -1,5 +1,5 @@
 //https://code.ptit.edu.vn/student/question/CPP0129
-//THỐNG KÊ PHẦN TỬ
+//ƯỚC SỐ CỦA GIAI THỪA
 
 #include <bits/stdc++.h>
 using namespace std;
