@@ -1,5 +1,5 @@
-//https://code.ptit.edu.vn/student/question/CPP0137
-//LIỆT KÊ SỐ CÓ BA ƯỚC SỐ TRONG KHOẢNG
+//https://code.ptit.edu.vn/student/question/CPP0139
+//SỐ SMITH
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -12,17 +12,36 @@ int isPrime(int n){
     return 1;
 }
 
+int sum(int n){
+    int res = 0;
+    while (n > 0){
+        res += n % 10;
+        n /= 10;
+    }
+    return res;
+}
+
+bool check(int n){
+    if(isPrime(n)) return false;
+    int res = 0, tmp = sum(n);
+    for(int i = 2; i <= sqrt(n); i++){
+        while (n % i == 0){
+                res += sum(i);
+                n /= i;
+        }
+    }
+    if(n > 1) res += sum(n);
+    return res == tmp;
+}
+
 int main() {
 	int test;
     cin >> test;
     while (test--){
-        ll l, r;
-        cin >> l >> r;
-        int st = sqrt(l), en = sqrt(r), cnt = 0;
-        for(int i = st; i <= en; i++){
-            if(isPrime(i)) cnt ++;
-        }
-        cout << cnt << endl;
+        int n;
+        cin >> n;
+        if(check(n))cout << "YES" << endl;
+        else cout << "NO" << endl; 
     }
 	return 0;
 }
