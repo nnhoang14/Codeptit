@@ -1,5 +1,5 @@
-//https://code.ptit.edu.vn/student/question/CPP0737
-//DÃY CON TRUNG BÌNH LỚN NHẤT
+//https://code.ptit.edu.vn/student/question/CPP0738
+//CỘNG 1 VÀ NHÂN ĐÔI
 
 #include <bits/stdc++.h> 
 using namespace std; 
@@ -9,25 +9,27 @@ int main() {
     int test; 
     cin >> test; 
     while (test--) { 
-        int n, k;
-        cin >> n >> k;
+        int n;
+        cin >> n;
         vector<ll> a(n);
         for(auto &x : a) cin >> x;
-        int sum = 0;
-        for(int i = 0; i < k; i++){
-            sum += a[i];
-        }
-        int l = 0, r = k - 1, tmp = sum;
-        for(int i = k; i < n; i++){
-            sum += a[i] - a[i - k];
-            if(sum > tmp){
-                tmp = sum;
-                l = i - k + 1;
-                r = i;
+        ll cnt = 0;
+        while (true){
+            for(int i = 0; i < n; i++){
+                if(a[i] % 2 == 1){
+                    a[i]--;
+                    cnt++;
+                }
             }
+            for(auto &x : a) x /= 2;
+            cnt++;
+            bool check = true;
+            for(auto &x : a){
+                if(x != 0) check = false;
+                }
+            if(check) break;
         }
-        for(int i = l; i <= r; i++) cout << a[i] << " ";
-        cout << endl;
+        cout << cnt - 1 << endl;
     } 
     return 0;
 }
