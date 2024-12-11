@@ -1,3 +1,6 @@
+//https://code.ptit.edu.vn/student/question/CPP0224
+//ĐẾM SỐ MIỀN MA TRẬN
+
 #include <bits/stdc++.h>
 using namespace std;
 
