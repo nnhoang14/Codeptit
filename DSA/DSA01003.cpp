@@ -12,15 +12,19 @@ int main(){
         cin >> n;
         vector<int> x(n);
         for(auto &num : x)cin >> num;
-        int pos = n - 1;
-        while (pos >= 0 && x[pos - 1] > x[pos] ){
+        int pos = n - 2;
+        while (pos >= 0 && x[pos] >= x[pos + 1] ){
             pos--;
         }
         if(pos < 0){
             reverse(x.begin(),x.end());
         } else {
-            swap(x[pos],x[pos - 1]);
-            reverse(x.begin() + pos + 1,x.end());
+            int i = n - 1;
+            while (x[i] <= x[pos]){ 
+                i --;
+            }
+            swap(x[pos], x[i]);
+            reverse(x.begin() + pos + 1, x.end());
         }
         for(auto num : x) cout << num << " ";
         cout << endl;
