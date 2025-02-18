@@ -6,14 +6,14 @@ using namespace std;
 typedef long long ll;
 
 int main() {
-	int test;
-    cin>>test;
+    int test;
+    cin >> test;
     while (test--)
     {
-        ll x,y,p,res = 1;
-        cin >> x >> y >>p;
+        ll x, y, p, res = 1;
+        cin >> x >> y >> p;
         x %= p;
-        while (y>0)
+        while (y > 0)
         {
             if(y % 2 == 1)res = (res * x) % p;
             y /= 2;
