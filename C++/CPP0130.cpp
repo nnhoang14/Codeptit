@@ -6,19 +6,19 @@ using namespace std;
 
 int main() {
     int test;
-    cin>>test;
+    cin >> test;
     while (test--)
     {
         long long num;
-        cin>>num;
+        cin >> num;
         for(long long i = 2; i <= sqrt(num); i++){
-            while(num%i==0){
-                cout<<i<<" ";
-                num/=i;
+            while(num % i == 0){
+                cout << i << " ";
+                num /= i;
             }
         }
-        if(num>1)cout<<num;
-        cout<<endl;
+        if(num > 1)cout << num;
+        cout << endl;
     }
     
     return 0;
