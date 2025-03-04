@@ -20,6 +20,5 @@ node makeNode(int x){
 
 int main(){
     node head = new Node();
-    
     return 0;
 }
