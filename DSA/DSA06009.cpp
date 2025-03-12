@@ -4,21 +4,18 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-struct Node{
-    int data;
-    Node* next;
-};
-
-typedef struct Node* node;
-
-node makeNode(int x){
-    node tmp = new Node();
-    tmp -> data = x;
-    tmp -> next = NULL;
-    return tmp;
-}
-
 int main(){
-    node head = new Node();
+    int t;
+    cin >> t;
+    while (t--){
+        int n, k, cnt = 0;
+        cin >> n >> k;
+        vector<int> a(n);
+        for(auto &x : a) cin >> x;
+        for(int i = 0; i < n - 1; i++)
+            for(int j = i + 1; j < n; j++)
+                if(k - a[i] == a[j]) cnt ++;
+        cout << cnt << endl;
+    }
     return 0;
 }
