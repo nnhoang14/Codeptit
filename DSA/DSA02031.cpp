@@ -9,12 +9,12 @@ vector<char> tmp;
 vector<bool> used;
 set<char> vowels = {'A', 'E'};
 
-int check(vector<char> &tmp){
+bool check(vector<char> &tmp){
     for(int i = 1; i < tmp.size() - 1; i++){
         if(vowels.count(tmp[i]) && !vowels.count(tmp[i - 1]) 
-        && !vowels.count(tmp[i + 1])) return 0;
+        && !vowels.count(tmp[i + 1])) return false;
     }
-    return 1;
+    return true;
 }
 
 void Try(int i){
@@ -22,7 +22,6 @@ void Try(int i){
         if(!used[j - 'A']){
             tmp[i] = j;
             used[j - 'A'] = true;
-            //cout << i << "-" << s - 'A' << "/";
             if(i == (s - 'A')){
                 if(check(tmp)){
                     for(auto x : tmp) cout << x;
