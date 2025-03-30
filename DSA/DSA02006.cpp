@@ -4,10 +4,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int n, k, check = 0;
+int n, k, check;
 vector<int> tmp, sol;
 
-int Try(int i, int sum){
+void Try(int i, int sum){
     if(sum == k){
         cout << "[";
         for(int j = 0; j < sol.size(); j++){
@@ -15,7 +15,7 @@ int Try(int i, int sum){
             else cout << sol[j] << " ";
         }
         check = 1;
-        //return;
+        return;
     }
     for(int j = i; j < n; j++){
        if(sum + tmp[j] <= k){
@@ -30,12 +30,14 @@ int main(){
     int t;
     cin >> t;
     while (t--){
+        check = 0;
         cin >> n >> k;
         tmp.resize(n);
         for(auto &x : tmp) cin >> x;
+        sort(tmp.begin(),tmp.end());
         Try(0, 0);
         if(!check) cout << "-1";
         cout << endl;
     }
     return 0;
-} 
+}

@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.C": "c",
+        "iostream": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "vector": "cpp"
+    }
+}
