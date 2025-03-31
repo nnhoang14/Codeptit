@@ -11,12 +11,12 @@ int main(){
     while (t--){
         ll n, k, cnt = 0;
         cin >> n >> k;
-        vector<ll> a(n);
-        for(auto &x : a) cin >> x;
-        for(int i = 0; i < n - 1; i ++){
-            for(int j = i + 1; j < n; j ++){
-                if(abs(a[i] - a[j]) < k) cnt++;
-            }
+        vector<ll> res(n);
+        for(auto &x : res) cin >> x;
+        sort(res.begin(), res.end());
+        for(int i = 0; i < n; i ++){
+            auto it = lower_bound(res.begin() + i + 1, res.end(), res[i] + k);
+            cnt += (it - res.begin() - 1 - i);
         }
         cout << cnt << endl; 
     }
