@@ -1,9 +1,9 @@
-#include <iostream>
-#include <vector>
+//https://code.ptit.edu.vn/student/question/DSA01012
+//MÃ GRAY 1
 
+#include <bits/stdc++.h>
 using namespace std;
 
-// Hàm sinh mã Gray kế tiếp
 void generateGrayCode(int n) {
     vector<string> grayCodes;
     grayCodes.push_back("0");
@@ -19,23 +19,18 @@ void generateGrayCode(int n) {
         }
     }
     
-    for (const string &code : grayCodes) {
-        cout << code << " ";
-    }
+    for (auto x : grayCodes)
+        cout << x << " ";
     cout << endl;
 }
 
 int main() {
-    int T;
-    cin >> T;
-    vector<int> testCases(T);
-    for (int i = 0; i < T; i++) {
-        cin >> testCases[i];
-    }
-    
-    for (int n : testCases) {
+    int t;
+    cin >> t;
+    while(t--){
+        int n;
+        cin >> n;
         generateGrayCode(n);
     }
-    
     return 0;
 }
