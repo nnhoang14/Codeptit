@@ -1,5 +1,5 @@
-//https://code.ptit.edu.vn/beta/problems/CTDL_005
-//XÓA DỮ LIỆU TRONG DSLK ĐƠN
+//https://code.ptit.edu.vn/beta/problems/CTDL_006
+//LỌC DỮ LIỆU TRÙNG TRONG DSLK ĐƠN
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -41,9 +41,6 @@ void insertLast(node &a, int x){
 }
 
 void deleteNum(node &a, int x){
-    while (a != NULL && a->data == x) {
-        a = a -> next;
-    }
     node tmp = a;
     while (tmp != NULL && tmp -> next != NULL) {
         if (tmp -> next -> data == x) {
@@ -51,6 +48,14 @@ void deleteNum(node &a, int x){
         } else {
             tmp = tmp -> next;
         }
+    }
+}
+
+void screenNum(node &a){
+    node tmp = a;
+    while (tmp != NULL){
+        deleteNum(tmp, tmp -> data);
+        tmp = tmp -> next;
     }
 }
 
@@ -62,7 +67,7 @@ void in(node a){
 }
 
 int main(){
-    int n, k;
+    int n;
     cin >> n;
     node head = NULL;
     for(int i = 0; i < n; i++){
@@ -70,8 +75,7 @@ int main(){
         cin >> x;
         insertLast(head, x);
     }
-    cin >> k;
-    deleteNum(head, k);
+    screenNum(head);
     in(head);
     return 0;
 }
