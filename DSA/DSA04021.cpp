@@ -4,24 +4,29 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int plusBit(int a, int b){
-    if(a + b == 2) return 0;
-    else return a + b;
+int len[94];
+
+void setup(){
+    len[1] = len[2] = 1;
+    for (int i = 3; i <= 93; i++)
+        len[i] = len[i - 1] + len[i - 2];
 }
 
-int fiboBit(int k){
-    if(k == 1) return 0;
-    if(k == 2) return 1;
-    return plusBit(fiboBit(k - 1), fiboBit(k - 2));
+int findChar(int n, int k){
+    if (n == 1) return 0;
+    if (n == 2) return 1;
+    if (k <= len[n - 2]) return findChar(n - 2, k);
+    else return findChar(n - 1, k - len[n - 2]);
 }
 
 int main(){
-    int tc;
-    cin >> tc;
-    while (tc--){
+    int t;
+    cin >> t;
+    setup();
+    while (t--){
         int n, k;
         cin >> n >> k;
-        cout << fiboBit(k) << endl;
+        cout << findChar(n, k) << endl;
     }
     return 0;
 }
