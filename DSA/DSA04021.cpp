@@ -1,5 +1,5 @@
 //https://code.ptit.edu.vn/student/question/DSA04021
-//	DÃY XÂU FIBONACCI
+//DÃY XÂU NHỊ PHÂN
 
 #include<bits/stdc++.h>
 using namespace std;
