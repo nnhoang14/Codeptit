@@ -9,7 +9,7 @@ typedef long long ll;
 int n, m, a[MAX][MAX];
 
 int main(){
-     int t;
+    int t;
     cin >> t;
     while (t--){
         cin >> n >> m;
