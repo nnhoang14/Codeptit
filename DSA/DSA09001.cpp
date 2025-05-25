@@ -1,26 +1,33 @@
+//https://code.ptit.edu.vn/student/question/DSA09001
+//CHUYỂN DANH SÁCH CẠNH SANG DANH SÁCH KỀ
+
 #include <bits/stdc++.h>
 using namespace std;
+#define MAX 1001
 
-vector<int> adj[1005];
 int n, m;
+vector<int> ke[MAX];
 
 int main() {
-    cin >> n >> m;
-    for(int i = 0; i < m; i++) {
-        int u, v;
-        cin >> u >> v;
-        adj[u].push_back(v);
-        adj[v].push_back(u); // vì đồ thị vô hướng
-    }
-
-    for(int i = 1; i <= n; i++) {
-        sort(adj[i].begin(), adj[i].end()); // nếu cần in theo thứ tự tăng dần
-        cout << i << ": ";
-        for(int v : adj[i]) {
-            cout << v << " ";
+    int t;
+    cin >> t;
+    while(t--){
+        cin >> n >> m;
+        for(int i = 1; i <= n; i++)
+            ke[i].clear();
+        for(int i = 0; i < m; i++) {
+            int u, v;
+            cin >> u >> v;
+            ke[u].push_back(v);
+            ke[v].push_back(u);
         }
-        cout << endl;
+    
+        for(int i = 1; i <= n; i++) {
+            cout << i << ": ";
+            for(int v : ke[i]) 
+                cout << v << " ";
+            cout << endl;
+        }
     }
-
     return 0;
 }
