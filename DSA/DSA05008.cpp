@@ -5,21 +5,12 @@
 using namespace std;
 
 int check(vector<int> &a, int n, int s) {
-    vector<vector<bool>> dp(n + 1, vector<bool>(s + 1, false));
-    for (int i = 0; i <= n; i++) dp[i][0] = true;
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= s; j++) {
-            if (j < a[i - 1]) dp[i][j] = dp[i - 1][j];
-            else dp[i][j] = dp[i - 1][j] || dp[i - 1][j - a[i - 1]];
-        }
-    }
-    for (int i = 0; i <= n; i++) {
-        for (int j = 0; j <= s; j++) {
-            cout << dp[i][j] << " ";
-        }
-        cout << endl;
-    }
-    return dp[n][s];
+    vector<bool> dp(s + 1, false);
+    dp[0] = true;
+    for(int i = 0; i < n; i++)
+      for(int j = s; j >= a[i]; j --)
+        if(dp[j - a[i]]) dp[j] = true;
+    return dp[s];
 }
 
 int main() {
