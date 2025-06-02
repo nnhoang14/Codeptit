@@ -5,16 +5,14 @@
 using namespace std;
 #define MAX 1001
 
-int n, m, s, a[MAX][MAX], chuaxet[MAX];
+int n, m, s, chuaxet[MAX];
+vector<int> ke[MAX];
 
 void DFS(int u){
     chuaxet[u] = 1;
     cout << u << " ";
-    for(int v = 1; v <= n; v++){
-        if(a[u][v] && !chuaxet[v]){
-            DFS(v);
-        }
-    }
+    for(auto v : ke[u])
+        if(!chuaxet[v]) DFS(v);
 }
 
 int main(){
@@ -23,14 +21,14 @@ int main(){
     while (t--){
         cin >> n >> m >> s;
         for(int i = 1; i <= n; i++){
-            fill(a[i], a[i] + n + 1, 0);
+            ke[i].clear();
             chuaxet[i] = 0;
         }
         for(int i = 1; i <= m; i++){
             int u, v;
             cin >> u >> v;
-            a[u][v] = 1;
-            a[v][u] = 1;
+            ke[u].push_back(v);
+            ke[v].push_back(u);
         }
         DFS(s);
         cout << endl;
