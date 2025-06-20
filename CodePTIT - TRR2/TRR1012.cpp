@@ -1,17 +1,16 @@
-//https://code.ptit.edu.vn/student/question/TRR1008
-//1.8 Đồ thị
+//https://code.ptit.edu.vn/student/question/TRR1009
+//1.9 Đồ thị
 
 #include <bits/stdc++.h>
 using namespace std;
 #define MAX 1005
 
-int status, n;
-vector<int> ke[MAX];
+int status, n, A[MAX][MAX], DegIn[MAX], DegOut[MAX];
 vector<pair<int, int>> dscanh;
 
 void option1() {
     for(int i = 1; i <= n; i++) {
-        cout << ke[i].size() << " ";
+        cout << DegIn[i] << " " << DegOut[i] << endl;
     }
 }
 
@@ -22,27 +21,22 @@ void option2() {
     }
 }
 
-//sai input mau
-
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 
-    freopen("DT.INP", "r", stdin);
-    freopen("DT.OUT", "w", stdout);
+    //freopen("DT.INP", "r", stdin);
+    //freopen("DT.OUT", "w", stdout);
 
     cin >> status >> n;
     for(int i = 1; i <= n; i++){
-        int t; 
-        cin >> t;
-        while(t --){
-            int x; 
-            cin >> x;
-            if(i < x){ 
-                ke[i].push_back(x);
-                ke[x].push_back(i);
-                dscanh.push_back({i, x});
+        for(int j = 1; j <= n; j++) {
+            cin >> A[i][j];
+            if(A[i][j]){
+                DegOut[i]++;
+                DegIn[j]++;
+                dscanh.push_back({i, j});
             }
         }
     }

@@ -5,7 +5,7 @@
 using namespace std;
 #define MAX 1005
 
-int status, n, m, A[MAX][MAX];
+int status, n;
 vector<int> ke[MAX];
 vector<pair<int, int>> dscanh;
 

@@ -8,6 +8,7 @@ using namespace std;
 int status, n, m;
 vector<int> ke[MAX];
 vector<pair<int, int>> dscanh;
+
 void option1() {
     for(int i = 1; i <= n; i++) {
         cout << ke[i].size() << " ";
