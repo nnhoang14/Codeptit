@@ -26,8 +26,8 @@ int main(){
     cin.tie(NULL);
     cout.tie(NULL);
 
-    //freopen("DT.INP", "r", stdin);
-    //freopen("DT.OUT", "w", stdout);
+    freopen("DT.INP", "r", stdin);
+    freopen("DT.OUT", "w", stdout);
 
     cin >> status >> n;
     for(int i = 1; i <= n; i++){
