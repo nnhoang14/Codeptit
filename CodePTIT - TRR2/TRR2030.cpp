@@ -1,5 +1,5 @@
-//https://code.ptit.edu.vn/student/question/TRR2027
-//2.27 Cạnh cầu
+//https://code.ptit.edu.vn/student/question/TRR2030
+//2.30 Cạnh cầu 
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -8,10 +8,20 @@ using namespace std;
 int n, A[MAX][MAX], chuaxet[MAX];
 vector<pair<int, int>> dscanh, res;
 
-void DFS(int u){
+void BFS(int u){
+    queue<int> q;
+    q.push(u);
     chuaxet[u] = 1;
-    for(int v = 1; v <= n; v++)
-        if(A[u][v] && !chuaxet[v]) DFS(v);
+    while(!q.empty()){
+        int v = q.front();
+        q.pop();
+        for(int i = 1; i <= n; i++){
+            if(A[v][i] && !chuaxet[i]){
+                chuaxet[i] = 1;
+                q.push(i);
+            }
+        }
+    }
 }
 
 int tplt(){
@@ -19,7 +29,7 @@ int tplt(){
     for(int i = 1; i <= n; i++){
         if(!chuaxet[i]){
             cnt ++;
-            DFS(i);
+            BFS(i);
         }
     }
     return cnt;
