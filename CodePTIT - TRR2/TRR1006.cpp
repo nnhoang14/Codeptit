@@ -1,5 +1,5 @@
-//https://code.ptit.edu.vn/student/question/TRR1005
-//1.5 Đồ thị
+//https://code.ptit.edu.vn/student/question/TRR1006
+//1.6 Đồ thị
 
 #include <bits/stdc++.h>
 using namespace std;
