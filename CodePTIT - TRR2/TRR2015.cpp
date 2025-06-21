@@ -1,34 +1,62 @@
-//https://code.ptit.edu.vn/student/question/TRR2015
-//2.15 Liên thông  
+//https://code.ptit.edu.vn/student/question/TRR2012
+//2.12 Liên thông
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-#define MAX 100
+#define MAX 1005
 
-int n, A[MAX][MAX], chuaxet[MAX];
-vector<int> res;
+int  n, cnt = 0;
+bool visited[MAX];
+vector<int> ke[MAX];
 
-void DFS(int u){
-    chuaxet[u] = 1;
-    for(int v = 1; v <= n; v++){
-        if(!chuaxet[v] && A[u][v]){
-            chuaxet[v] = 1;
+void DFS(int u) {
+    visited[u] = true;
+    for(auto v : ke[u]) {
+        if(!visited[v]) {
             DFS(v);
         }
     }
 }
 
+int check() {
+    for(int i = 1; i <= n; i++) {
+        if(!visited[i]) return 0;
+    }
+    return 1;
+}
+
+void tplt(){
+    for(int i = 1; i <= n; i++) {
+        memset(visited, false, sizeof(visited));
+        DFS(i);
+        cnt += check();
+    }
+    
+    if(cnt == n){
+        cout << 1 << endl;
+    } else if(cnt > 0 && cnt < n) {
+        cout << 2 << endl;
+    } else {
+        cout << 0 << endl;
+    }
+}
+
 int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
     freopen("TK.INP", "r", stdin);
     freopen("TK.OUT", "w", stdout);
+
     cin >> n;
-    for(int i = 1; i <=n; i++)
-        for(int j = 1; j <=n; j++)
-            cin >> A[i][j];
-    memset(chuaxet, 0, sizeof chuaxet);
     for(int i = 1; i <= n; i++)
-        if(!chuaxet[i])
-            DFS(i);
-    
+        for(int j = 1; j <= n; j++){
+            int x;
+            cin >> x;
+            if(x) ke[i].push_back(j);
+        }
+
+    tplt();
     return 0;
 }
