@@ -5,31 +5,23 @@
 using namespace std;
 #define MAX 1005
 
-int n, A[MAX][MAX], chuaxet[MAX];
-vector<int> res;
+int n;
+bool visited[MAX];
+vector<int> res, ke[MAX];
 
-void BFS(int u){
-    queue<int> q;
-    q.push(u);
-    chuaxet[u] = 1;
-    while (!q.empty()){
-        int v = q.front();
-        q.pop();
-        for(int i = 1; i <= n; i++)
-            if(A[v][i] && !chuaxet[i]){
-                chuaxet[i] = 1;
-                q.push(v);
-                q.push(i);
-            }
-    }
+void DFS(int u){
+    visited[u] = true;
+    for(auto v : ke[u])
+        if(!visited[v])
+            DFS(v);
 }
 
 int tplt(){
     int cnt = 0;
     for(int i = 1; i <= n; i++){
-        if(!chuaxet[i]){
+        if(!visited[i]){
             cnt ++;
-            BFS(i);
+            DFS(i);
         }
     }
     return cnt;
@@ -39,19 +31,26 @@ int main(){
     ios_base::sync_with_stdio(0); 
     cin.tie(NULL);                
     cout.tie(NULL);
+
     freopen("TK.INP", "r", stdin);
     freopen("TK.OUT", "w", stdout);
+
     cin >> n;
-    for(int i = 1; i <=n; i++)
-        for(int j = 1; j <=n; j++)
-            cin >> A[i][j];
+    for(int i = 1; i <=n; i++){
+        for(int j = 1; j <=n; j++){
+            int x;
+            cin >> x;
+            if(x) ke[i].push_back(j);
+        }
+    }
     int origin = tplt();
     for(int i = 1; i <= n; i++){
-        memset(chuaxet, 0, sizeof(chuaxet));
-        chuaxet[i] = 1;
+        memset(visited, false, sizeof(visited));
+        visited[i] = true;
         if(origin < tplt())
             res.push_back(i);
     }
+
     cout << res.size() << endl;
     sort(res.begin(), res.end());
     for(auto x : res) cout << x << " ";
