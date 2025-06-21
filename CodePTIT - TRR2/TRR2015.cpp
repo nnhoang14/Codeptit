@@ -34,10 +34,10 @@ void tplt(){
 
     if(cnt == n){
         cout << 1 << endl;
-    } else if(cnt > 0 && cnt < n) {
-        cout << 2 << endl;
-    } else {
+    } else if(!cnt) {
         cout << 0 << endl;
+    } else {
+        cout << 2 << endl;
     }
 }
 
