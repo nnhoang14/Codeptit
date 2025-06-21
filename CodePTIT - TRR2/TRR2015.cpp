@@ -1,5 +1,5 @@
-//https://code.ptit.edu.vn/student/question/TRR2012
-//2.12 Liên thông
+//https://code.ptit.edu.vn/student/question/TRR2015
+//2.15 Liên thông  
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -31,7 +31,7 @@ void tplt(){
         DFS(i);
         cnt += check();
     }
-    
+
     if(cnt == n){
         cout << 1 << endl;
     } else if(cnt > 0 && cnt < n) {
