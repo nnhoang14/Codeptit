@@ -1,0 +1,101 @@
+//https://code.ptit.edu.vn/student/question/TRR3001
+//3.1 Chu trình Euler
+
+#include <bits/stdc++.h>
+using namespace std;
+#define MAX 1005
+
+int status, n, u, A[MAX][MAX], visited[MAX], Deg[MAX];
+
+void DFS(int u) {
+    visited[u] = 1;
+    for(int v = 1; v <= n; v++) {
+        if(A[u][v] && !visited[v]) {
+            DFS(v);
+        }
+    }
+}
+
+void Euler(int u) {
+    stack<int> st, ce;
+    st.push(u);
+    while(!st.empty()) {
+        int v = st.top(), isEmpty = 0;
+        for(int i = 1; i <= n; i++) {
+            if(A[v][i]) {
+                isEmpty = 1;
+                A[v][i] = A[i][v] = 0;
+                st.push(i);
+                break;
+            }
+        }
+
+        if(!isEmpty){
+            st.pop();
+            ce.push(v);
+        }  
+    }
+
+    while(!ce.empty()) {
+        cout << ce.top() << " ";
+        ce.pop();
+    }
+}
+
+void option1() {
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= n; j++) {
+            cin >> A[i][j];
+            if(A[i][j] && i < j) {
+                Deg[i]++;
+                Deg[j]++;
+            }
+        }
+    }
+    
+    int cnt = 0;
+    for(int i = 1; i <= n; i++) {
+        if(!visited[i]) {
+            DFS(i);
+            cnt++;
+        }
+    }
+
+    int res = 0;
+    if (cnt == 1) {
+        int oddCount = 0;
+        for(int i = 1; i <= n; i++) {
+            if(Deg[i] % 2 != 0) {
+                oddCount++;
+            }
+        }
+        res = (!oddCount) ? 1 : 2;
+    }
+    cout << res;
+}
+
+void option2() {
+    cin >> u;
+    for(int i = 1; i <= n; i++) 
+        for(int j = 1; j <= n; j++) 
+            cin >> A[i][j];
+    Euler(u);
+}
+
+int main() {
+    ios_base::sync_with_stdio(0); 
+    cin.tie(NULL);                
+    cout.tie(NULL);
+
+    freopen("CT.INP", "r", stdin);
+    freopen("CT.OUT", "w", stdout);
+
+    cin >> status >> n;
+    if(status == 1) {
+        option1();
+    } else {
+        option2();
+    }
+
+    return 0;
+}
