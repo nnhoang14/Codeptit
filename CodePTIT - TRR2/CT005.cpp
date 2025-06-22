@@ -1,11 +1,11 @@
-//https://code.ptit.edu.vn/student/question/CT004
-//Chu trình Hamilton 01
+//https://code.ptit.edu.vn/student/question/CT005
+//Chu trình Hamilton 02
 
 #include <bits/stdc++.h>
 using namespace std;
 #define MAX 1005
 
-int n, u, A[MAX][MAX], visited[MAX];
+int n, m, u, visited[MAX];
 vector<int> ke[MAX], path;
 vector<vector<int>> res;
 
@@ -29,14 +29,12 @@ void hmt(int i, int v) {
 }
 
 int main(){
-    cin >> n >> u;
-    for(int i = 1; i <= n; i++){
-        for(int j = 1; j <= n; j++){
-            cin >> A[i][j];
-            if(A[i][j]) {
-                ke[i].push_back(j);
-            }
-        }
+    cin >> n >> m >> u;
+    for(int i = 1; i <= m; i++){
+        int x, y;
+        cin >> x >> y;
+        ke[x].push_back(y);
+        ke[y].push_back(x);
     }
     
     path.push_back(u);
