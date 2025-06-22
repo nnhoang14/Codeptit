@@ -64,5 +64,6 @@ int main(){
     }
 
     Prim(u);
+    
     return 0;
 }
