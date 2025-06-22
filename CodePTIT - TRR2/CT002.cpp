@@ -52,26 +52,25 @@ void option1() {
             }
         }
     }
-
-    int cnt = 0;
+    
+    DFS(1);
     for(int i = 1; i <= n; i++) {
         if(!visited[i]) {
-            DFS(i);
-            cnt++;
+            cout << 0;
+            return;
         }
     }
 
-    int res = 0;
-    if (cnt == 1) {
-        int oddCount = 0;
-        for(int i = 1; i <= n; i++) {
-            if(Deg[i] % 2 != 0) {
-                oddCount++;
-            }
+    int oddCount = 0;
+    for(int i = 1; i <= n; i++) {
+        if(Deg[i] % 2 != 0) {
+            oddCount++;
         }
-        res = (!oddCount) ? 1 : 2;
     }
-    cout << res;
+    
+    if (oddCount == 0) cout << 1; 
+    else if (oddCount == 2) cout << 2;
+    else cout << 0;
 }
 
 void option2() {

@@ -1,5 +1,5 @@
-//https://code.ptit.edu.vn/student/question/TRR3004
-//3.4 Chu trình Euler
+//https://code.ptit.edu.vn/student/question/CT003
+//Chu trình Euler 03
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -42,45 +42,61 @@ void Euler(int u) {
     }
 }
 
-void option1() {
+int checkEuler() {
+    memset(visited, 0, sizeof(visited));
+    DFS(1);
     for(int i = 1; i <= n; i++) {
+        if(!visited[i]) return 0;
+    }
+
+    int l = 0, r = 0;
+    for(int i = 1; i <= n; i++) {
+        if(DegIn[i] != DegOut[i]){ 
+            if(DegOut[i] - DegIn[i] == 1) r++;
+            else if (DegIn[i] - DegOut[i] == 1) l++;
+            else return 0;
+        }
+    }
+
+    if (l == 0 && r == 0) return 1;
+    else if (l == 1 && r == 1) return 2;
+    return 0;
+}
+
+void option1() {
+    for(int i = 1; i <= n; i++){
+        int t;
+        cin >> t;
+        for(int j = 0; j < t; j++) {
+            int v;
+            cin >> v;
+            A[i][v] = 1;
+        }
+    }
+
+    for(int i = 1; i <= n; i++){
         for(int j = 1; j <= n; j++) {
-            cin >> A[i][j];
-            if(A[i][j]) {
+            if(A[i][j] == 1) {
                 B[i][j] = B[j][i] = 1;
                 DegOut[i]++;
                 DegIn[j]++;
             }
         }
     }
-    
-    DFS(1);
-    for(int i = 1; i <= n; i++) {
-        if(!visited[i]) {
-            cout << 0;
-            return;
-        }
-    }
-
-    int diff = 0, l = 0, r = 0;
-    for(int i = 1; i <= n; i++) {
-        if(DegIn[i] != DegOut[i]){ 
-            diff++;
-            if(DegOut[i] - DegIn[i] == 1) r++;
-            else if (DegIn[i] - DegOut[i] == 1) l++;
-        }
-    }
-
-    if (diff == 0) cout << 1;
-    else if (diff == 2 && l == 1 && r == 1) cout << 2;
-    else cout << 0;
+    cout << checkEuler(); 
 }
 
 void option2() {
     cin >> u;
-    for(int i = 1; i <= n; i++) 
-        for(int j = 1; j <= n; j++) 
-            cin >> A[i][j];
+    for(int i = 1; i <= n; i++){
+        int t;
+        cin >> t;
+        for(int j = 0; j < t; j++) {
+            int v;
+            cin >> v;
+            A[i][v] = 1;
+        }
+    }
     Euler(u);
 }
 
@@ -89,8 +105,8 @@ int main() {
     cin.tie(NULL);                
     cout.tie(NULL);
 
-    freopen("CT.INP", "r", stdin);
-    freopen("CT.OUT", "w", stdout);
+    //freopen("CT.out", "r", stdin);
+    //freopen("CT.in", "w", stdout);
 
     cin >> status >> n;
     if(status == 1) {
