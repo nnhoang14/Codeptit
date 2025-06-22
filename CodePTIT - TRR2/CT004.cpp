@@ -5,18 +5,23 @@
 using namespace std;
 #define MAX 1005
 
-int n, u, A[MAX][MAX], visited[MAX];
+int n, u, visited[MAX];
 vector<int> ke[MAX], path;
 vector<vector<int>> res;
 
 void hmt(int i, int v) {
-    if(i == n + 1 && v == u) {
-        for(int j = 1; j <= n; j++) {
-            if(!visited[j]) return;
+    if(i == n) {
+        for(auto x : ke[v]) {
+            if(x == u){
+                path.push_back(u);
+                res.push_back(path);
+                path.pop_back();
+                break;
+            }
         }
-        res.push_back(path);
         return;
     }
+
     for(auto x : ke[v]) {
         if(!visited[x]) {
             visited[x] = 1;
@@ -32,14 +37,13 @@ int main(){
     cin >> n >> u;
     for(int i = 1; i <= n; i++){
         for(int j = 1; j <= n; j++){
-            cin >> A[i][j];
-            if(A[i][j]) {
-                ke[i].push_back(j);
-            }
+            int x; cin >> x;
+            if(x) ke[i].push_back(j);
         }
     }
     
     path.push_back(u);
+    visited[u] = 1;
     hmt(1, u);
 
     cout << res.size() << endl;
