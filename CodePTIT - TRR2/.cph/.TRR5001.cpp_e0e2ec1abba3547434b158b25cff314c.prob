@@ -1,0 +1,1 @@
+{"name":"Local: TRR5001","url":"g:\\CodePTIT_Source\\CodePTIT - TRR2\\TRR5001.cpp","tests":[{"id":1750609551614,"input":"4 1 2\n0 7 8 2\n10000 0 10000 10000\n10000 1 0 10000\n10000 5 1 0","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"g:\\CodePTIT_Source\\CodePTIT - TRR2\\TRR5001.cpp","group":"local","local":true}
