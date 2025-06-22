@@ -7,7 +7,7 @@ using namespace std;
 
 int  n, cnt = 0;
 bool visited[MAX];
-vector<int> ke[MAX];
+vector<int> ke[MAX], ke1[MAX];
 
 void DFS(int u) {
     visited[u] = true;
@@ -18,27 +18,33 @@ void DFS(int u) {
     }
 }
 
-int check() {
+void DFS1(int u) {
+    visited[u] = true;
+    for(auto v : ke1[u]) {
+        if(!visited[v]) {
+            DFS1(v);
+        }
+    }
+}
+
+int isStrong(){
     for(int i = 1; i <= n; i++) {
-        if(!visited[i]) return 0;
+        memset(visited, false, sizeof(visited));
+        DFS(i);
+        for(int i = 1; i <= n; i++) {
+            if(!visited[i]) return 0;
+        }
     }
     return 1;
 }
 
-void tplt(){
+int isWeak() {
+    memset(visited, false, sizeof(visited));
+    DFS1(1);
     for(int i = 1; i <= n; i++) {
-        memset(visited, false, sizeof(visited));
-        DFS(i);
-        cnt += check();
+        if(!visited[i]) return 0;
     }
-
-    if(cnt == n){
-        cout << 1 << endl;
-    } else if(!cnt) {
-        cout << 0 << endl;
-    } else {
-        cout << 2 << endl;
-    }
+    return 1;
 }
 
 int main(){
@@ -54,9 +60,19 @@ int main(){
         for(int j = 1; j <= n; j++){
             int x;
             cin >> x;
-            if(x) ke[i].push_back(j);
+            if(x){ 
+                ke[i].push_back(j);
+                ke1[i].push_back(j);
+                ke1[j].push_back(i);
+            }
         }
 
-    tplt();
+    if(isStrong()){
+        cout << 1 << endl;
+    } else if(isWeak()) {
+        cout << 2 << endl;
+    } else {
+        cout << 0 << endl;
+    }
     return 0;
 }
