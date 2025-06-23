@@ -5,44 +5,54 @@
 using namespace std;
 #define MAX 1005
 
-int n, u, v, A[MAX][MAX], parent[MAX];
-vector<pair<int, int>> ke[MAX];
+int n, dist[MAX][MAX], nex[MAX][MAX];
 
-void Dijkstra() {
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
-    vector<int> dist(n + 1, 10000);
-    pq.push({0, u});
-    dist[u] = 0;
+vector<int> reconstruct(int u, int v) {
+    vector<int> path;
+    path.push_back(u);
+    while (u != v) {
+        u = nex[u][v];
+        path.push_back(u);
+    }
+    return path;
+}
 
-    while(!pq.empty()) {
-        auto top = pq.top();
-        pq.pop();
-        for(auto x : ke[top.second]) {
-            int i = x.first;
-            int w = x.second;
-            if(top.first > dist[i]) continue;
-            if(dist[i] > dist[top.second] + w) {
-                dist[i] = dist[top.second] + w;
-                parent[i] = top.second;
-                pq.push({dist[i], i});
+void Floyd() {
+    for(int k = 1; k <= n; k++) {
+        for(int i = 1; i <= n; i++) {
+            for(int j = 1; j <= n; j++) {
+                if(dist[i][k] == 10000 || dist[k][j] == 10000 || i == j) continue;
+                if(dist[i][j] > dist[i][k] + dist[k][j]) {
+                    dist[i][j] = dist[i][k] + dist[k][j];
+                    nex[i][j] = nex[i][k];
+                }
             }
         }
     }
 
-    if(dist[v] == 10000){
+    int maxValue = INT_MIN;
+    int u_ans = -1, v_ans = -1;
+    for (int u = 1; u <= n; u++)
+        for (int v = 1; v <= n; v++)
+            if (u != v && dist[u][v] < 10000) {
+                if (dist[u][v] > maxValue ||
+                   (dist[u][v] == maxValue && make_pair(u, v) < make_pair(u_ans, v_ans))) {
+                    maxValue = dist[u][v];
+                    u_ans = u;
+                    v_ans = v;
+                }
+            }
+
+    if(maxValue == INT_MIN){
         cout << 0;
         return;
     }
-    cout << dist[v] << endl;
-
-    vector<int> path;
-    int j = v;
-    while(j != 0) {
-        path.push_back(j);
-        j = parent[j];
+    cout << u_ans << " " << v_ans << " " << maxValue << endl;
+    vector<int> v = reconstruct(u_ans, v_ans);
+    for(auto x : v) {
+        cout << x << " ";
     }
-    reverse(path.begin(), path.end());
-    for(auto x : path) cout << x << " ";
+    cout << endl;
 }
 
 int main() {
@@ -50,18 +60,18 @@ int main() {
     cin.tie(NULL);
     cout.tie(NULL);
 
-    //freopen("DN.INP", "r", stdin);
-    //freopen("DN.OUT", "w", stdout);
+    freopen("DN.INP", "r", stdin);
+    freopen("DN.OUT", "w", stdout);
 
-    cin >> n >> u >> v;
+    cin >> n ;
     for(int i = 1; i <= n; i++){ 
         for(int j = 1; j <= n; j++){ 
-            int x; cin >> x;
-            if(x != 10000 && i != j)
-                ke[i].push_back({j, x});
+            cin >> dist[i][j];
+            if(dist[i][j] != 10000 && i != j) nex[i][j] = j;
+            else nex[i][j] = -1;
         }
     }
-    Dijkstra();
+    Floyd();
 
     return 0;
 }

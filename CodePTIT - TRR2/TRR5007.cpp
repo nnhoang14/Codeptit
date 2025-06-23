@@ -5,7 +5,7 @@
 using namespace std;
 #define MAX 1005
 
-int n, u, v, A[MAX][MAX], parent[MAX];
+int n, u, v, parent[MAX];
 vector<pair<int, int>> ke[MAX];
 
 void BellmanFord() {
